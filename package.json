@@ -1,0 +1,8 @@
+{
+  "name": "jsdx-phone",
+  "version": "0.0.1",
+  "description": "JavaScript phone call frontend",
+  "dependencies": {
+    "dbus": ">= 0.0.4"
+  }
+}
