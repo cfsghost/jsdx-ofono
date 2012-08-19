@@ -15,13 +15,12 @@ by Yao Wei <mwei@lxde.org>
   Ofono = (function() {
 
     function Ofono(modemName, callback) {
-      var self;
-      self = this;
+      var _this = this;
       this.modemName = modemName;
       dbus.start(function() {
-        self.systemBus = dbus.system_bus();
-        self.manager = dbus.get_interface(self.systemBus, 'org.ofono', '/', 'org.ofono.Manager');
-        self.modem = new Modem(self);
+        _this.systemBus = dbus.system_bus();
+        _this.manager = dbus.get_interface(_this.systemBus, 'org.ofono', '/', 'org.ofono.Manager');
+        _this.modem = new Modem(_this);
         return callback();
       });
     }

@@ -12,12 +12,11 @@ Modem = require './lib/modem'
 
 class Ofono
   constructor: (modemName, callback) ->
-    self = @
     @modemName = modemName
-    dbus.start ->
-      self.systemBus = dbus.system_bus()
-      self.manager = dbus.get_interface self.systemBus, 'org.ofono', '/', 'org.ofono.Manager'
-      self.modem = new Modem(self)
+    dbus.start =>
+      @systemBus = dbus.system_bus()
+      @manager = dbus.get_interface @systemBus, 'org.ofono', '/', 'org.ofono.Manager'
+      @modem = new Modem(@)
       callback()
   getModems: () ->
     return @manager.GetModems()
